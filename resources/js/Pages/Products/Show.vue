@@ -1,10 +1,16 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
 import { Link } from '@inertiajs/vue3';
+
+defineProps({
+    product: Object,
+    recomendedProducts: Array,
+});
+
 </script>
 
 <template>
-    <AppLayout title="Dashboard">
+    <AppLayout :title="product.name">
         <div class="">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="overflow-hidden py-2">
@@ -25,28 +31,25 @@ import { Link } from '@inertiajs/vue3';
                                             Back to Products
                                         </Link>
 
-                                        <h2 class="text-3xl font-bold lg:text-4xl lg:text-5xl dark:text-white">Iphone X - 256 Gb</h2>
+                                        <h2 class="text-3xl font-bold lg:text-4xl lg:text-5xl dark:text-white">{{ product.name }}</h2>
 
                                         <div class="flex items-center gap-x-5">
                                             <a class="inline-flex items-center gap-1.5 py-1 px-3 sm:py-2 sm:px-4 rounded-full text-xs sm:text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-800 dark:text-gray-200"
                                                 href="#">
-                                                Toko Diki Serba Ada
+                                                {{ product.team.name }}
                                             </a>
-                                            <p class="text-xs sm:text-sm text-gray-800 dark:text-gray-200">January 18, 2023
+                                            <p class="text-xs sm:text-sm text-gray-800 dark:text-gray-200">{{ product.created_at }}
                                             </p>
                                         </div>
 
                                         <figure>
                                             <img class="w-full object-cover rounded-xl"
-                                                src="https://images.unsplash.com/photo-1671726203454-488ab18f7eda?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+                                                :src="product.photo_path"
                                                 alt="Image Description">
                                         </figure>
 
-                                        <p class="text-lg text-gray-800 dark:text-gray-200">At preline, our mission has
-                                            always been focused on bringing openness and transparency to the design process.
-                                            We've always believed that by providing a space where designers can share
-                                            ongoing work not only empowers them to make better products, it also helps them
-                                            grow.</p>
+                                        <p class="text-lg text-gray-800 dark:text-gray-200">{{ product.description }}</p>
+                                        <p class="text-lg text-gray-800 dark:text-gray-200">{{ product.specification }}</p>
 
                                     </div>
                                 </div>
@@ -64,7 +67,7 @@ import { Link } from '@inertiajs/vue3';
                                         <a class="group grow block" href="">
                                             <h5
                                                 class="group-hover:text-gray-600 text-sm font-semibold text-gray-800 dark:group-hover:text-gray-400 dark:text-gray-200">
-                                                Toko Diki Serba Ada
+                                                {{ product.team.name }}
                                             </h5>
                                         </a>
                                     </div>
@@ -72,17 +75,21 @@ import { Link } from '@inertiajs/vue3';
 
                                     <div class="space-y-6">
                                         <!-- Store Products -->
-                                        <a class="group flex items-center gap-x-6" href="#">
+                                        <a 
+                                            v-for="(product, i) in recomendedProducts"
+                                            :key="product.id"
+                                            :href="route('products.show', { product })"
+                                            class="group flex items-center gap-x-6">
                                             <div class="grow">
                                                 <span
                                                     class="text-sm font-bold text-gray-800 group-hover:text-blue-600 dark:text-gray-200 dark:group-hover:text-blue-500">
-                                                    Iphone X - 256 Gb
+                                                    {{ product.name }}
                                                 </span>
                                             </div>
 
                                             <div class="flex-shrink-0 relative rounded-lg overflow-hidden w-20 h-20">
                                                 <img class="w-full h-full absolute top-0 left-0 object-cover rounded-lg"
-                                                    src="https://images.unsplash.com/photo-1567016526105-22da7c13161a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
+                                                    :src="product.photo_path"
                                                     alt="Image Description">
                                             </div>
                                         </a>
