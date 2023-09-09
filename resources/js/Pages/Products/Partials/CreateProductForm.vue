@@ -11,7 +11,7 @@ import TextInput from '@/Components/TextInput.vue';
 
 const form = useForm({
     name: '',
-    sku: 0,
+    sku: '0',
     description: '',
     specification: '',
     photo: null,

@@ -45,8 +45,8 @@ class ProductController extends Controller
     public function store(StoreRequest $request, CreateProduct $createProduct)
     {
         $product = $createProduct->handle($request);
-
-        return to_route('products.show', $product);
+        
+        return to_route('products.show', $product)->with('success', 'the product is stored!');
     }
 
     /**
@@ -97,7 +97,7 @@ class ProductController extends Controller
         $actionUpdateProduct = new UpdateProduct();
         $product = $actionUpdateProduct->handle($request, $product);
 
-        return to_route('products.show', $product);
+        return to_route('products.index')->with('success', 'the product is updated!');
     }
 
     /**
@@ -111,6 +111,6 @@ class ProductController extends Controller
 
         $product->delete();
 
-        return to_route('products.index');
+        return to_route('products.index')->with('success', 'the product is deleted!');
     }
 }

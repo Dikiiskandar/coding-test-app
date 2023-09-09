@@ -14,9 +14,6 @@ const props = defineProps({
     ownedPermissions: Array,
 });
 
-console.log("props")
-console.log(props)
-
 const confirmingProductDeletion = ref(false);
 const form = useForm({});
 
