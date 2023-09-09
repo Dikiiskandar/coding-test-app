@@ -53,13 +53,13 @@ const closeModal = () => {
                                 <div class="py-8 lg:pr-4 lg:pr-8">
                                     <div class="space-y-5 lg:space-y-8">
                                         <Link class="inline-flex items-center gap-x-1.5 text-sm text-gray-600 decoration-2 hover:underline dark:text-blue-400"
-                                            :href="route('products.index')">
+                                            :href="route('home')">
                                             <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 fill="currentColor" viewBox="0 0 16 16">
                                                 <path fill-rule="evenodd"
                                                     d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
                                             </svg>
-                                            Back to Products
+                                            Back to Home
                                         </Link>
 
                                         <h2 class="text-3xl font-bold lg:text-4xl lg:text-5xl dark:text-white">{{ product.name }}</h2>
@@ -73,7 +73,7 @@ const closeModal = () => {
                                                 <p class="text-xs sm:text-sm text-gray-800 dark:text-gray-200">{{ product.created_at }}</p>
                                             </div>
                                             <div
-                                                v-if="currentTeam.id == product.team.id" 
+                                                v-if="currentTeam && currentTeam.id == product.team.id" 
                                                 class="flex items-center gap-x-2">
                                                 <Link 
                                                     v-if="['update', '*'].some(i => ownedPermissions.includes(i))"

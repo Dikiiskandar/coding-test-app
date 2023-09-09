@@ -16,6 +16,12 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['show']); 
+    }
+
     public function index()
     {
         $product = Product::where('team_id', auth()->user()->currentTeam->id)->with('team')->paginate(8);
@@ -49,16 +55,19 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         $user = auth()->user();
-        $currentTeam = $user->currentTeam;
-        $ownedPermissions = $user->teamPermissions($user->currentTeam);
+
+        if($user) {
+            $currentTeam = $user->currentTeam;
+            $ownedPermissions = $user->teamPermissions($user->currentTeam);
+        }
 
         $recomendedProducts = Product::where('team_id', $product->team->id)->inRandomOrder()->limit(3)->get();
 
         return inertia('Products/Show', [
             'product' => $product->load('team'),
             'recomendedProducts' => $recomendedProducts->load('team'),
-            'currentTeam' => $currentTeam,
-            'ownedPermissions' => $ownedPermissions,
+            'currentTeam' => $currentTeam ?? null,
+            'ownedPermissions' => $ownedPermissions ?? [],
         ]);
     }
 

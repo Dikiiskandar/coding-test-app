@@ -21,12 +21,13 @@ Route::get('/', function () {
     return to_route('home');
 });
 
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::resource('products', ProductController::class);
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
-
-    Route::resource('products', ProductController::class);
 });
