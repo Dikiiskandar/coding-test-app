@@ -100,17 +100,17 @@ const displayableRole = (role) => {
             <!-- Add Team Member -->
             <FormSection @submitted="addTeamMember">
                 <template #title>
-                    Add Team Member
+                    Add Store Member
                 </template>
 
                 <template #description>
-                    Add a new team member to your team, allowing them to collaborate with you.
+                    Add a new user member to your store, allowing them to collaborate with you.
                 </template>
 
                 <template #form>
                     <div class="col-span-6">
                         <div class="max-w-xl text-sm text-gray-600 dark:text-gray-400">
-                            Please provide the email address of the person you would like to add to this team.
+                            Please provide the email address of the person you would like to add to this store.
                         </div>
                     </div>
 
@@ -180,11 +180,11 @@ const displayableRole = (role) => {
             <!-- Team Member Invitations -->
             <ActionSection class="mt-10 sm:mt-0">
                 <template #title>
-                    Pending Team Invitations
+                    Pending Store Invitations
                 </template>
 
                 <template #description>
-                    These people have been invited to your team and have been sent an invitation email. They may join the team by accepting the email invitation.
+                    These people have been invited to your store and have been sent an invitation email. They may join the store by accepting the email invitation.
                 </template>
 
                 <!-- Pending Team Member Invitation List -->
@@ -217,11 +217,11 @@ const displayableRole = (role) => {
             <!-- Manage Team Members -->
             <ActionSection class="mt-10 sm:mt-0">
                 <template #title>
-                    Team Members
+                    Store Members
                 </template>
 
                 <template #description>
-                    All of the people that are part of this team.
+                    All of the people that are part of this store.
                 </template>
 
                 <!-- Team Member List -->
@@ -331,11 +331,11 @@ const displayableRole = (role) => {
         <!-- Leave Team Confirmation Modal -->
         <ConfirmationModal :show="confirmingLeavingTeam" @close="confirmingLeavingTeam = false">
             <template #title>
-                Leave Team
+                Leave Store
             </template>
 
             <template #content>
-                Are you sure you would like to leave this team?
+                Are you sure you would like to leave this store?
             </template>
 
             <template #footer>
@@ -357,11 +357,11 @@ const displayableRole = (role) => {
         <!-- Remove Team Member Confirmation Modal -->
         <ConfirmationModal :show="teamMemberBeingRemoved" @close="teamMemberBeingRemoved = null">
             <template #title>
-                Remove Team Member
+                Remove Store Member
             </template>
 
             <template #content>
-                Are you sure you would like to remove this person from the team?
+                Are you sure you would like to remove this person from the store?
             </template>
 
             <template #footer>
