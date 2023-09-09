@@ -1,16 +1,47 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
 import { Link } from '@inertiajs/vue3';
+import DangerButton from '@/Components/DangerButton.vue';
+import DialogModal from '@/Components/DialogModal.vue';
+import SecondaryButton from '@/Components/SecondaryButton.vue';
+import { useForm } from '@inertiajs/vue3';
+import { ref } from 'vue';
 
-defineProps({
+const props = defineProps({
     product: Object,
     recomendedProducts: Array,
+    currentTeam: Object,
+    ownedPermissions: Array,
 });
+
+console.log("props")
+console.log(props)
+
+const confirmingProductDeletion = ref(false);
+const form = useForm({});
+
+const confirmProductDeletion = () => {
+    confirmingProductDeletion.value = true;
+};
+
+const deleteProduct = () => {
+    form.delete(route('products.destroy', props.product), {
+        preserveScroll: true,
+        onSuccess: () => closeModal(),
+        onFinish: () => form.reset(),
+    });
+};
+
+const closeModal = () => {
+    confirmingProductDeletion.value = false;
+
+    form.reset();
+};
 
 </script>
 
 <template>
-    <AppLayout :title="product.name">
+    <AppLayout :title="'Show Product -' + product.name">
         <div class="">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="overflow-hidden py-2">
@@ -33,13 +64,30 @@ defineProps({
 
                                         <h2 class="text-3xl font-bold lg:text-4xl lg:text-5xl dark:text-white">{{ product.name }}</h2>
 
-                                        <div class="flex items-center gap-x-5">
-                                            <a class="inline-flex items-center gap-1.5 py-1 px-3 sm:py-2 sm:px-4 rounded-full text-xs sm:text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-800 dark:text-gray-200"
-                                                href="#">
-                                                {{ product.team.name }}
-                                            </a>
-                                            <p class="text-xs sm:text-sm text-gray-800 dark:text-gray-200">{{ product.created_at }}
-                                            </p>
+                                        <div class="flex">
+                                            <div class="flex items-center gap-x-5 flex-1">
+                                                <a class="inline-flex items-center gap-1.5 py-1 px-3 sm:py-2 sm:px-4 rounded-full text-xs sm:text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-800 dark:text-gray-200"
+                                                    href="#">
+                                                    {{ product.team.name }}
+                                                </a>
+                                                <p class="text-xs sm:text-sm text-gray-800 dark:text-gray-200">{{ product.created_at }}</p>
+                                            </div>
+                                            <div
+                                                v-if="currentTeam.id == product.team.id" 
+                                                class="flex items-center gap-x-2">
+                                                <Link 
+                                                    v-if="['update', '*'].some(i => ownedPermissions.includes(i))"
+                                                    :href="route('products.edit', { product })" 
+                                                    class="inline-flex items-center px-4 py-2 bg-gray-800 dark:bg-gray-200 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 uppercase tracking-widest hover:bg-gray-700 dark:hover:bg-white focus:bg-gray-700 dark:focus:bg-white active:bg-gray-900 dark:active:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">
+                                                    Edit
+                                                </Link>
+
+                                                <DangerButton 
+                                                    v-if="['delete', '*'].some(i => ownedPermissions.includes(i))"
+                                                    @click="confirmProductDeletion">
+                                                    Delete Product
+                                                </DangerButton>
+                                            </div>
                                         </div>
 
                                         <figure>
@@ -103,6 +151,32 @@ defineProps({
                     <!-- End Detail Product -->
                 </div>
             </div>
+
+            <!-- Delete Product Confirmation Modal -->
+            <DialogModal :show="confirmingProductDeletion" @close="closeModal">
+                <template #title>
+                    Delete Product
+                </template>
+
+                <template #content>
+                    Are you sure you want to delete this product? Once your product is deleted, all of its resources and data will be permanently deleted.
+                </template>
+
+                <template #footer>
+                    <SecondaryButton @click="closeModal">
+                        Cancel
+                    </SecondaryButton>
+
+                    <DangerButton
+                        class="ml-3"
+                        :class="{ 'opacity-25': form.processing }"
+                        :disabled="form.processing"
+                        @click="deleteProduct"
+                    >
+                        Delete Product
+                    </DangerButton>
+                </template>
+            </DialogModal>
         </div>
     </AppLayout>
 </template>

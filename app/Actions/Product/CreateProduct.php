@@ -5,7 +5,7 @@ namespace App\Actions\Product;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
-class CreateNewProduct
+class CreateProduct
 {
     public function handle(Request $request): Product
     {
