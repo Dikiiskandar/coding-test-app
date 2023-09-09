@@ -56,7 +56,7 @@ defineProps({
                                     class="mt-2 text-lg font-medium text-gray-800 group-hover:text-blue-600 dark:text-gray-300 dark:group-hover:text-white">
                                     {{ item.name }}
                                 </h3>
-                                <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                                <p class="mt-2 text-sm text-gray-600 dark:text-gray-400 truncate">
                                     {{ item.description }}
                                 </p>
                             </div>

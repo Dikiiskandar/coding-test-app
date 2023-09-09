@@ -49,17 +49,19 @@ const closeModal = () => {
                             <div class="lg:col-span-2">
                                 <div class="py-8 lg:pr-4 lg:pr-8">
                                     <div class="space-y-5 lg:space-y-8">
-                                        <Link class="inline-flex items-center gap-x-1.5 text-sm text-gray-600 decoration-2 hover:underline dark:text-blue-400"
+                                        <Link
+                                            class="inline-flex items-center gap-x-1.5 text-sm text-gray-600 decoration-2 hover:underline dark:text-blue-400"
                                             :href="route('home')">
-                                            <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                fill="currentColor" viewBox="0 0 16 16">
-                                                <path fill-rule="evenodd"
-                                                    d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
-                                            </svg>
-                                            Back to Home
+                                        <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd"
+                                                d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
+                                        </svg>
+                                        Back to Home
                                         </Link>
 
-                                        <h2 class="text-3xl font-bold lg:text-4xl lg:text-5xl dark:text-white">{{ product.name }}</h2>
+                                        <h2 class="text-3xl font-bold lg:text-4xl lg:text-5xl dark:text-white">{{
+                                            product.name }}</h2>
 
                                         <div class="flex">
                                             <div class="flex items-center gap-x-5 flex-1">
@@ -67,20 +69,24 @@ const closeModal = () => {
                                                     href="#">
                                                     {{ product.team.name }}
                                                 </a>
-                                                <p class="text-xs sm:text-sm text-gray-800 dark:text-gray-200">{{ product.created_at }}</p>
+                                                <a class="inline-flex items-center gap-1.5 py-1 px-3 sm:py-2 sm:px-4 rounded-full text-xs sm:text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-800 dark:text-gray-200"
+                                                    href="#">
+                                                    {{ product.created_at }}
+                                                </a>
+                                                <a class="inline-flex items-center gap-1.5 py-1 px-3 sm:py-2 sm:px-4 rounded-full text-xs sm:text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-800 dark:text-gray-200"
+                                                    href="#">
+                                                    Stock: {{ product.sku }}
+                                                </a>
                                             </div>
-                                            <div
-                                                v-if="currentTeam && currentTeam.id == product.team.id" 
+                                            <div v-if="currentTeam && currentTeam.id == product.team.id"
                                                 class="flex items-center gap-x-2">
-                                                <Link 
-                                                    v-if="['update', '*'].some(i => ownedPermissions.includes(i))"
-                                                    :href="route('products.edit', { product })" 
+                                                <Link v-if="['update', '*'].some(i => ownedPermissions.includes(i))"
+                                                    :href="route('products.edit', { product })"
                                                     class="inline-flex items-center px-4 py-2 bg-gray-800 dark:bg-gray-200 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 uppercase tracking-widest hover:bg-gray-700 dark:hover:bg-white focus:bg-gray-700 dark:focus:bg-white active:bg-gray-900 dark:active:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">
-                                                    Edit
+                                                Edit
                                                 </Link>
 
-                                                <DangerButton 
-                                                    v-if="['delete', '*'].some(i => ownedPermissions.includes(i))"
+                                                <DangerButton v-if="['delete', '*'].some(i => ownedPermissions.includes(i))"
                                                     @click="confirmProductDeletion">
                                                     Delete Product
                                                 </DangerButton>
@@ -88,13 +94,17 @@ const closeModal = () => {
                                         </div>
 
                                         <figure>
-                                            <img class="w-full object-cover rounded-xl"
-                                                :src="product.photo_path"
+                                            <img class="w-full object-cover rounded-xl" :src="product.photo_path"
                                                 alt="Image Description">
                                         </figure>
-
-                                        <p class="text-lg text-gray-800 dark:text-gray-200">{{ product.description }}</p>
-                                        <p class="text-lg text-gray-800 dark:text-gray-200">{{ product.specification }}</p>
+                                        <div class="space-y-3">
+                                            <h3 class="text-2xl font-semibold dark:text-white">Description</h3>
+                                            <p class="text-lg text-gray-800 dark:text-gray-200">{{ product.description }}</p>
+                                        </div>
+                                        <div class="space-y-3">
+                                            <h3 class="text-2xl font-semibold dark:text-white">Specification</h3>
+                                            <p class="text-lg text-gray-800 dark:text-gray-200">{{ product.specification }}</p>
+                                        </div>
 
                                     </div>
                                 </div>
@@ -119,10 +129,13 @@ const closeModal = () => {
                                     <!-- End Store Profile -->
 
                                     <div class="space-y-6">
+
+                                        <p
+                                            class="text-sm text-center text-gray-500">
+                                            Another Product
+                                        </p>
                                         <!-- Store Products -->
-                                        <a 
-                                            v-for="(product, i) in recomendedProducts"
-                                            :key="product.id"
+                                        <a v-for="(product, i) in recomendedProducts" :key="product.id"
                                             :href="route('products.show', { product })"
                                             class="group flex items-center gap-x-6">
                                             <div class="grow">
@@ -134,8 +147,7 @@ const closeModal = () => {
 
                                             <div class="flex-shrink-0 relative rounded-lg overflow-hidden w-20 h-20">
                                                 <img class="w-full h-full absolute top-0 left-0 object-cover rounded-lg"
-                                                    :src="product.photo_path"
-                                                    alt="Image Description">
+                                                    :src="product.photo_path" alt="Image Description">
                                             </div>
                                         </a>
                                         <!-- End Store Products -->
@@ -156,7 +168,8 @@ const closeModal = () => {
                 </template>
 
                 <template #content>
-                    Are you sure you want to delete this product? Once your product is deleted, all of its resources and data will be permanently deleted.
+                    Are you sure you want to delete this product? Once your product is deleted, all of its resources and
+                    data will be permanently deleted.
                 </template>
 
                 <template #footer>
@@ -164,12 +177,8 @@ const closeModal = () => {
                         Cancel
                     </SecondaryButton>
 
-                    <DangerButton
-                        class="ml-3"
-                        :class="{ 'opacity-25': form.processing }"
-                        :disabled="form.processing"
-                        @click="deleteProduct"
-                    >
+                    <DangerButton class="ml-3" :class="{ 'opacity-25': form.processing }" :disabled="form.processing"
+                        @click="deleteProduct">
                         Delete Product
                     </DangerButton>
                 </template>
