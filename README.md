@@ -30,16 +30,20 @@ cp .env.example .env
 ```
 php artisan key:generate
 ```
-5.  **Run Migrations:**
+5.  **Generate Storage Link:**
+```
+php artisan storage:link
+```
+6.  **Run Migrations:**
 ```
 php artisan migrate
 ```
-6.  **Frontend Assets:**
+7.  **Frontend Assets:**
 ```
 npm install 
 npm run build
 ```
-7.  **Start the Development Server:**
+8.  **Start the Development Server:**
 ```
 php artisan serve
 ```
