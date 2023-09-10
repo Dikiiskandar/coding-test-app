@@ -17,11 +17,7 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return to_route('home');
-});
-
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
 Route::resource('products', ProductController::class);
