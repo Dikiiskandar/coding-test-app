@@ -28,7 +28,10 @@ class ProductController extends Controller
 
     public function index()
     {
-        $product = Product::where('team_id', auth()->user()->currentTeam->id)->with('team')->paginate(8);
+        $product = Product::where('team_id', auth()->user()->currentTeam->id)
+            ->with('team')
+            ->orderBy('created_at', 'DESC')
+            ->paginate(8);
 
         return inertia('Products/Index', [
             'product' => $product

@@ -12,7 +12,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $product = Product::with('team')->paginate(8);
+        $product = Product::with('team')
+            ->orderBy('created_at', 'DESC')
+            ->paginate(8);
 
         return inertia('Home', [
             'product' => $product
