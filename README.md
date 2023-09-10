@@ -12,20 +12,20 @@ Before you can run a this project locally, ensure you have the following prerequ
 
 ## Getting Started
 
-1.  Clone the Repository:
-    git clone https://github.com/Dikiiskandar/coding-test-app.git
-    cd coding-test-app
-2.  Install Dependencies:
-    composer install
-3.  Copy the Environment File:
-    cp .env.example .env
-    Update the .env file with your database, mail and other environment-specific settings.
-4.  Generate an Application Key:
-    php artisan key:generate
-5.  Run Migrations:
-    php artisan migrate
-6.  Frontend Assets:
-    npm install && npm run build
-7.  Start the Development Server:
-    php artisan serve
-8.  Access the Application:
+1.  **Clone the Repository:**
+    - git clone https://github.com/Dikiiskandar/coding-test-app.git
+    - cd coding-test-app
+2.  **Install Dependencies:**
+    - composer install
+3.  **Copy the Environment File:**
+    - cp .env.example .env
+    - Update the .env file with your database, mail and other environment-specific settings.
+4.  **Generate an Application Key:**
+    - php artisan key:generate
+5.  **Run Migrations:**
+    - php artisan migrate
+6.  **Frontend Assets:**
+    - npm install && npm run build
+7.  **Start the Development Server:**
+    - php artisan serve
+8.  **Access the Application:**
