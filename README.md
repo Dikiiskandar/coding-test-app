@@ -25,7 +25,8 @@ Before you can run a this project locally, ensure you have the following prerequ
 5.  **Run Migrations:**
     - php artisan migrate
 6.  **Frontend Assets:**
-    - npm install && npm run build
+    - npm install 
+    - npm run build
 7.  **Start the Development Server:**
     - php artisan serve
     - This will start the server at [http://127.0.0.1:8000](http://127.0.0.1:8000).
