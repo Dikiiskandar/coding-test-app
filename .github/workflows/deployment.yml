@@ -1,0 +1,38 @@
+name: Deployment
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: 8.2.8
+
+    - name: Deploy
+      uses: appleboy/ssh-action@master
+      with:
+        host: masdeclara.com
+        username: u1577467
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        passphrase: ${{ secrets.SSH_PASSPHRASE }}
+        port: 65002
+        script: |
+          cd /home/u1577467/public_html/coding-test-app.masdeclara.com/coding-test-app
+          git pull origin master
+          composer install
+          php artisan migrate
+          source /home/u1577467/nodevenv/public_html/coding-test-app.masdeclara.com/coding-test-app/14/bin/activate && cd /home/u1577467/public_html/coding-test-app.masdeclara.com/coding-test-app
+          npm install
+          npm run build
+
+
