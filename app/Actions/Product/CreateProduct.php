@@ -4,6 +4,7 @@ namespace App\Actions\Product;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CreateProduct
 {
@@ -16,6 +17,7 @@ class CreateProduct
         }
 
         return Product::create([
+            'uuid' => Str::uuid()->toString(),
             'team_id' => auth()->user()->currentTeam->id,
             'user_id' => auth()->id(),
             'name' => $request->name,

@@ -12,6 +12,7 @@ class Product extends Model
     use HasImage;
 
     protected $fillable = [
+        'uuid',
         'team_id',
         'user_id',
         'name',

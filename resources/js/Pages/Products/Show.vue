@@ -60,8 +60,10 @@ const closeModal = () => {
                                         Back to Home
                                         </Link>
 
-                                        <h2 class="text-3xl font-bold lg:text-4xl lg:text-5xl dark:text-white">{{
-                                            product.name }}</h2>
+                                        <h2 class="text-3xl font-bold lg:text-4xl lg:text-5xl dark:text-white">
+                                            {{product.name }}
+                                            <span class="text-xs text-gray-800 dark:text-gray-200">{{ product.uuid }}</span>
+                                        </h2>
 
                                         <div class="flex">
                                             <div class="flex items-center gap-x-5 flex-1">
