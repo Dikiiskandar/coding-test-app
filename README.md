@@ -19,11 +19,11 @@ cd coding-test-app
 ```
 2.  **Install Dependencies:**
 ```
-    composer install
+composer install
 ```
 3.  **Copy the Environment File:**
 ```
-    - cp .env.example .env
+cp .env.example .env
 ```
 > Update the .env file with your database, mail and other environment-specific settings.
 4.  **Generate an Application Key:**
