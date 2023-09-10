@@ -36,7 +36,7 @@ php artisan storage:link
 ```
 6.  **Run Migrations:**
 ```
-php artisan migrate
+php artisan migrate --seed
 ```
 7.  **Frontend Assets:**
 ```
