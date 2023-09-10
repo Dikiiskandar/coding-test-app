@@ -48,3 +48,9 @@ npm run build
 php artisan serve
 ```
 >This will start the server at [http://127.0.0.1:8000](http://127.0.0.1:8000).
+
+## Testing
+```
+php artisan test
+```
+>This will run automated testing.
