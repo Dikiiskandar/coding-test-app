@@ -55,15 +55,6 @@ const logout = () => {
                                     :active="route().current('products.index')">
                                     My Product
                                 </NavLink>
-                                <div v-else class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
-                                    <Link :href="route('login')"
-                                        class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
-                                    Log in</Link>
-
-                                    <Link :href="route('register')"
-                                        class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
-                                    Register</Link>
-                                </div>
                             </div>
                         </div>
 
@@ -189,6 +180,14 @@ const logout = () => {
                                 </Dropdown>
                             </div>
                         </div>
+                        <div v-else class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <NavLink :href="route('login')" :active="route().current('login')">
+                                Log in
+                            </NavLink>
+                            <NavLink :href="route('register')" :active="route().current('register')">
+                                Register
+                            </NavLink>
+                        </div>
 
                         <!-- Hamburger -->
                         <div class="-mr-2 flex items-center sm:hidden">
@@ -217,7 +216,10 @@ const logout = () => {
                         <ResponsiveNavLink :href="route('home')" :active="route().current('home')">
                             Home
                         </ResponsiveNavLink>
-                        <ResponsiveNavLink :href="route('products.index')" :active="route().current('products.index')">
+                        <ResponsiveNavLink 
+                            v-if="$page.props.auth.user"
+                            :href="route('products.index')" 
+                            :active="route().current('products.index')">
                             My Product
                         </ResponsiveNavLink>
                     </div>
@@ -303,6 +305,18 @@ const logout = () => {
                                 </template>
                             </template>
                         </div>
+                    </div>
+                    <div v-else>
+                        <ResponsiveNavLink 
+                            :href="route('login')" 
+                            :active="route().current('login')">
+                            Log in
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink 
+                            :href="route('register')" 
+                            :active="route().current('register')">
+                            Register
+                        </ResponsiveNavLink>
                     </div>
                 </div>
             </nav>
