@@ -61,7 +61,7 @@ const closeModal = () => {
                                         </Link>
 
                                         <h2 class="text-3xl font-bold lg:text-4xl lg:text-5xl dark:text-white">
-                                            {{product.name }}
+                                            {{ product.name }}
                                             <span class="text-xs text-gray-800 dark:text-gray-200">{{ product.uuid }}</span>
                                         </h2>
 
@@ -101,11 +101,13 @@ const closeModal = () => {
                                         </figure>
                                         <div class="space-y-3">
                                             <h3 class="text-2xl font-semibold dark:text-white">Description</h3>
-                                            <p class="text-lg text-gray-800 dark:text-gray-200">{{ product.description }}</p>
+                                            <p class="text-lg text-gray-800 dark:text-gray-200">{{ product.description }}
+                                            </p>
                                         </div>
                                         <div class="space-y-3">
                                             <h3 class="text-2xl font-semibold dark:text-white">Specification</h3>
-                                            <p class="text-lg text-gray-800 dark:text-gray-200">{{ product.specification }}</p>
+                                            <p class="text-lg text-gray-800 dark:text-gray-200">{{ product.specification }}
+                                            </p>
                                         </div>
 
                                     </div>
@@ -132,8 +134,7 @@ const closeModal = () => {
 
                                     <div class="space-y-6">
 
-                                        <p
-                                            class="text-sm text-center text-gray-500">
+                                        <p class="text-sm text-center text-gray-500">
                                             Another Product
                                         </p>
                                         <!-- Store Products -->
