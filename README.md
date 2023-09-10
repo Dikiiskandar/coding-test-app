@@ -1,5 +1,10 @@
 # Coding Test App
-This README guide will walk you through the steps to run a Laravel project locally on your machine. Laravel is a popular PHP framework known for its elegance and ease of use in building web applications.
+
+**Code Style:**
+"In our JavaScript files, we adhere to the Airbnb JavaScript code style guide, which furnishes a comprehensive set of rules and conventions aimed at crafting clean and easily maintainable JavaScript code."
+
+**CI/CD Pipeline Choice:**
+"For the specific needs of this project, we have established a workflow using GitHub Actions. This decision is in direct alignment with the project's requirements, as GitHub Actions offers a robust suite of features designed to automate our build, test, and deployment procedures."
 
 ## Prerequisites
 Before you can run a this project locally, ensure you have the following prerequisites installed on your machine:
