@@ -4,7 +4,7 @@ This README guide will walk you through the steps to run a Laravel project local
 ## Prerequisites
 Before you can run a this project locally, ensure you have the following prerequisites installed on your machine:
 
-- [PHP](https://www.php.net/) (>= 8)
+- [PHP](https://www.php.net/) (>= 8.1)
 - [Composer](https://getcomposer.org/)
 - [Node.js](https://nodejs.org/) (for Laravel Mix)
 - [npm](https://www.npmjs.com/) (for Laravel Mix)
