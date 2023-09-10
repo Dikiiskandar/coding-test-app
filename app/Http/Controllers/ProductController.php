@@ -51,6 +51,10 @@ class ProductController extends Controller
      */
     public function store(StoreRequest $request, CreateProduct $createProduct)
     {
+        if(!auth()->user()->hasTeamPermission(auth()->user()->currentTeam, 'create')){
+            abort(401);
+        }
+
         $product = $createProduct->handle($request);
         
         return to_route('products.show', $product)->with('success', 'the product is stored!');

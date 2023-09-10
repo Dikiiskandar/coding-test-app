@@ -50,7 +50,15 @@ php artisan serve
 >This will start the server at [http://127.0.0.1:8000](http://127.0.0.1:8000).
 
 ## Testing
+### Running tests for the "product" group
+```
+php artisan test --group product
+```
+>This command will execute only the tests associated with the "product" group
+
+### Running all tests
+
 ```
 php artisan test
 ```
->This will run automated testing.
+>This command will execute all tests
