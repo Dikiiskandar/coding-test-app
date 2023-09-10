@@ -22,15 +22,25 @@ cd coding-test-app
     composer install
 ```
 3.  **Copy the Environment File:**
+```
     - cp .env.example .env
-...Update the .env file with your database, mail and other environment-specific settings.
+```
+> Update the .env file with your database, mail and other environment-specific settings.
 4.  **Generate an Application Key:**
-    - php artisan key:generate
+```
+php artisan key:generate
+```
 5.  **Run Migrations:**
-    - php artisan migrate
+```
+php artisan migrate
+```
 6.  **Frontend Assets:**
-    - npm install 
-    - npm run build
+```
+npm install 
+npm run build
+```
 7.  **Start the Development Server:**
-    - php artisan serve
-...This will start the server at [http://127.0.0.1:8000](http://127.0.0.1:8000).
+```
+php artisan serve
+```
+>This will start the server at [http://127.0.0.1:8000](http://127.0.0.1:8000).
