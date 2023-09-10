@@ -19,7 +19,11 @@ class ProductController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth')->except(['show']); 
+        $this->middleware([
+            'auth:sanctum',
+            config('jetstream.auth_session'),
+            'verified'
+        ])->except(['show']); 
     }
 
     public function index()
