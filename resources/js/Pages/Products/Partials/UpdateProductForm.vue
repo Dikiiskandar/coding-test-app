@@ -8,6 +8,7 @@ import ActionMessage from '@/Components/ActionMessage.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import SecondaryButton from '@/Components/SecondaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
+import TextareaInput from '@/Components/TextareaInput.vue';
 
 const props = defineProps({
     product: Object
@@ -117,7 +118,7 @@ const updatePhotoPreview = () => {
             </div>
             <div class="col-span-6 sm:col-span-4">
                 <InputLabel for="description" value="Product Description" />
-                <TextInput
+                <TextareaInput
                     id="description"
                     v-model="form.description"
                     type="text"
@@ -128,7 +129,7 @@ const updatePhotoPreview = () => {
             </div>
             <div class="col-span-6 sm:col-span-4">
                 <InputLabel for="specification" value="Product Specification" />
-                <TextInput
+                <TextareaInput
                     id="specification"
                     v-model="form.specification"
                     type="text"
