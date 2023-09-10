@@ -28,4 +28,4 @@ Before you can run a this project locally, ensure you have the following prerequ
     - npm install && npm run build
 7.  **Start the Development Server:**
     - php artisan serve
-8.  **Access the Application:**
+    - This will start the server at [http://127.0.0.1:8000](http://127.0.0.1:8000).
